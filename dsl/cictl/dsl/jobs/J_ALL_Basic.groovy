@@ -3,10 +3,11 @@
  */
 
 import javaposse.jobdsl.dsl.DslFactory
+import net.arjs.jobs.cictl.Constants
 import net.arjs.jobs.cictl.DslJobBase
 
 new DslJobBase(
-        name: "J_ALL_BASIC",
+        name: Constants.S_COMMON_DIR + Constants.S_JOB_SEPARATOR + "J_ALL_BASIC",
         displayName: "ALL: Basic [J,1.0,M]",
         description: "A basic job"
 ).build(this as DslFactory)
