@@ -12,7 +12,7 @@ folder(Constants.S_SITES_DIR) {
     description('Folder for websites')
 }
 
-folder(Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "WS03") {
+folder(Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "CF_ALL_WS03") {
     displayName('v2.arjs.net')
     description('Folder for project v2.arjs.net')
 }
