@@ -7,6 +7,16 @@ import javaposse.jobdsl.dsl.DslFactory
 import net.arjs.jobs.cictl.Constants
 import net.arjs.jobs.cictl.DslJobBase
 
+folder(Constants.S_SITES_DIR) {
+    displayName('Project A')
+    description('Folder for websites')
+}
+
+folder(Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "WS03") {
+    displayName('v2.arjs.net')
+    description('Folder for project v2.arjs.net')
+}
+
 job = new DslJobBase(
         name: Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "WS03" + Constants.S_JOB_SEPARATOR + "B_MB_WS03",
         displayName: "ALL: v2.arjs.net [B,MB,WS03,1.0,T]",
