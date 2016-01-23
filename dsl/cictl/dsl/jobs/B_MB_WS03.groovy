@@ -8,7 +8,7 @@ import net.arjs.jobs.cictl.Constants
 import net.arjs.jobs.cictl.DslJobBase
 
 folder(Constants.S_SITES_DIR) {
-    displayName('Project A')
+    displayName('Websites')
     description('Folder for websites')
 }
 
@@ -18,7 +18,7 @@ folder(Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "CF_ALL_WS03") {
 }
 
 job = new DslJobBase(
-        name: Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "WS03" + Constants.S_JOB_SEPARATOR + "B_MB_WS03",
+        name: Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "CF_ALL_WS03" + Constants.S_JOB_SEPARATOR + "B_MB_WS03",
         displayName: "ALL: v2.arjs.net [B,MB,WS03,1.0,T]",
         description: "A job to build v2.arjs.net (WS03) from master branch (MB)."
 ).build(this as DslFactory)
