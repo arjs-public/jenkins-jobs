@@ -15,7 +15,7 @@ class DslJobBase {
     int artifactNumToKeep = -1
     int artifactDaysToKeep = -1
 
-    Job build(DslFactory dslFactory) {
+    def build = { DslFactory dslFactory ->
         dslFactory.job(name) {
             it.displayName this.displayName
             it.description this.description
