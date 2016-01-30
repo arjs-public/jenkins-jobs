@@ -23,6 +23,10 @@ job = new DslJobBase(
         description: "A job to build v2.arjs.net (WS03) from master branch (MB)."
 ).build(this as DslFactory)
 
+job.parameters {
+    booleanParam('DEBUG1', false, 'Enable debuging of script1.')
+}
+
 job.scm {
     git {
         remote {
@@ -35,4 +39,14 @@ job.scm {
         recursiveSubmodules(false)
         relativeTargetDir('src')
     }
+}
+
+job.wrappers {
+    colorizeOutput()
+    timestamps()
+}
+
+String scriptText1 = this.getClass().getResource( '/scripts/script1.sh' ).text
+job.steps {
+    shell(scriptText1)
 }
