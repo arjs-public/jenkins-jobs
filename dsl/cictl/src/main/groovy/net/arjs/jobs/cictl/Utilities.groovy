@@ -24,6 +24,7 @@ class Utilities {
             getBasePath()
         }
         String filePath = currentDir + ((relativePath.startsWith('/')) ? '' : '/') + relativePath
+        println(filePath)
         String scriptText
         if (isWorkingPath) {
             scriptText = job.readFileFromWorkspace(filePath)
