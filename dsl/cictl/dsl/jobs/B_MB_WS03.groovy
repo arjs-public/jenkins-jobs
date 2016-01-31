@@ -4,12 +4,12 @@
  */
 
 
-import com.sun.org.apache.xpath.internal.operations.Bool
+//import com.sun.org.apache.xpath.internal.operations.Bool
 import javaposse.jobdsl.dsl.DslFactory
 import net.arjs.jobs.cictl.Constants
 import net.arjs.jobs.cictl.Utilities
 import net.arjs.jobs.cictl.DslJobBase
-import sun.font.TrueTypeFont
+//import sun.font.TrueTypeFont
 
 folder(Constants.S_SITES_DIR) {
     displayName('Websites')
@@ -48,16 +48,9 @@ job.scm {
 job.wrappers {
     colorizeOutput()
     timestamps()
+    buildName('${GIT_BRANCH}/${GIT_REVISION, length=8}')
 }
 
-//Boolean isWorkspace = false
-//String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
-//if (!currentDir.endsWith('dsl/cictl')) {
-//    currentDir += 'dsl/cictl'
-//    isWorkspace = true
-//}
-
-//String scriptText = Utilities.readFile(job, 'dsl/jobs/scripts/script1.sh')
 String scriptText
 String filePath = Utilities.getFilePath('/dsl/jobs/scripts/script1.sh')
 if (Utilities.isWorkingPath) {
