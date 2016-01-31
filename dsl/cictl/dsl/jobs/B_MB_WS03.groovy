@@ -49,7 +49,7 @@ job.wrappers {
 String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
 println(currentDir)
 if (!currentDir.endsWith('dsl/cictl')) {
-    currentDir += '/dsl/cictl'
+    currentDir += './dsl/cictl'
     println(currentDir)
 }
 String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
