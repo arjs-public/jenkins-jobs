@@ -46,19 +46,19 @@ job.wrappers {
     timestamps()
 }
 
-String currentDir = new File(".").getAbsolutePath()
+String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
 println(currentDir)
-if (!currentDir.endsWith('dsl/cictl/.')) {
-    currentDir += '/dsl/cictl/.'
+if (!currentDir.endsWith('dsl/cictl')) {
+    currentDir += '/dsl/cictl'
     println(currentDir)
 }
-String filePath = currentDir + "/" + 'dsl/jobs/scripts/script1.sh'
+String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
 println(filePath)
 String scriptText1 = new File(filePath).getText('UTF-8')
 job.steps {
     shell(scriptText1)
 }
-filePath = currentDir + "/" + 'src/main/resources/scripts/script1.sh'
+filePath = currentDir + '/src/main/resources/scripts/script1.sh'
 println(filePath)
 String scriptText2 = new File(filePath).getText('UTF-8')
 job.steps {
