@@ -25,6 +25,10 @@ class DslJobBase {
                 artifactNumToKeep this.artifactNumToKeep
                 artifactDaysToKeep this.artifactDaysToKeep
             }
+            wrappers {
+                colorizeOutput()
+                timestamps()
+            }
         }
     }
 

@@ -46,8 +46,6 @@ job.scm {
 }
 
 job.wrappers {
-    colorizeOutput()
-    timestamps()
     buildName('${GIT_BRANCH}/${GIT_REVISION, length=8}')
 }
 
