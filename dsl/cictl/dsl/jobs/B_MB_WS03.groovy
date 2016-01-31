@@ -57,13 +57,14 @@ job.wrappers {
 //    isWorkspace = true
 //}
 
-String scriptText = Utilities.readFile(job, 'dsl/jobs/scripts/script1.sh')
-//String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
-//if (isWorkspace) {
-//    scriptText = readFileFromWorkspace(filePath)
-//} else {
-//    scriptText = new File(filePath).getText('UTF-8')
-//}
+//String scriptText = Utilities.readFile(job, 'dsl/jobs/scripts/script1.sh')
+String scriptText
+String filePath = Utilities.getFilePath('/dsl/jobs/scripts/script1.sh')
+if (Utilities.isWorkingPath) {
+    scriptText = readFileFromWorkspace(filePath)
+} else {
+    scriptText = new File(filePath).getText('UTF-8')
+}
 job.steps {
     shell(scriptText)
 }
