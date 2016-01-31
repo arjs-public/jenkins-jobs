@@ -3,9 +3,12 @@
  * A job to build v2.arjs.net (WS03) from master branch (MB).
  */
 
+
+import com.sun.org.apache.xpath.internal.operations.Bool
 import javaposse.jobdsl.dsl.DslFactory
 import net.arjs.jobs.cictl.Constants
 import net.arjs.jobs.cictl.DslJobBase
+import sun.font.TrueTypeFont
 
 folder(Constants.S_SITES_DIR) {
     displayName('Websites')
@@ -46,28 +49,34 @@ job.wrappers {
     timestamps()
 }
 
-String ws = System.getenv('WORKSPACE')
-String scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parent
-String scriptFile = getClass().protectionDomain.codeSource.location.path
-
-println ws
-println scriptDir
-println scriptFile
+Boolean isWorkspace = false
 String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
 println(currentDir)
 if (!currentDir.endsWith('dsl/cictl')) {
-    currentDir += './dsl/cictl'
+    currentDir += 'dsl/cictl'
+    isWorkspace = true
     println(currentDir)
 }
+
+String scriptText
 String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
 println(filePath)
-String scriptText1 = new File(filePath).getText('UTF-8')
-job.steps {
-    shell(scriptText1)
+if (isWorkspace) {
+    scriptText = readFileFromWorkspace(filePath)
+} else {
+    scriptText = new File(filePath).getText('UTF-8')
 }
+job.steps {
+    shell(scriptText)
+}
+
 filePath = currentDir + '/src/main/resources/scripts/script1.sh'
 println(filePath)
-String scriptText2 = new File(filePath).getText('UTF-8')
+if (isWorkspace) {
+    scriptText = readFileFromWorkspace(filePath)
+} else {
+    scriptText = new File(filePath).getText('UTF-8')
+}
 job.steps {
-    shell(scriptText2)
+    shell(scriptText)
 }
