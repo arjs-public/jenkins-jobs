@@ -46,7 +46,13 @@ job.wrappers {
     timestamps()
 }
 
-String scriptText1 = this.getClass().getResource( '/scripts/script1.sh' ).text
+String currentDir = new File(".").getAbsolutePath()
+println(currentDir)
+String scriptText1 = new File('dsl/jobs/scripts/script1.sh').getText('UTF-8')
 job.steps {
     shell(scriptText1)
+}
+String scriptText2 = new File('src/main/resources/scripts/script1.sh').getText('UTF-8')
+job.steps {
+    shell(scriptText2)
 }
