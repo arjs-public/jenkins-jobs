@@ -46,6 +46,13 @@ job.wrappers {
     timestamps()
 }
 
+String ws = System.getenv('WORKSPACE')
+String scriptDir = new File(getClass().protectionDomain.codeSource.location.path).parent
+String scriptFile = getClass().protectionDomain.codeSource.location.path
+
+println ws
+println scriptDir
+println scriptFile
 String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
 println(currentDir)
 if (!currentDir.endsWith('dsl/cictl')) {
