@@ -57,7 +57,7 @@ job.wrappers {
 //    isWorkspace = true
 //}
 
-String scriptText = Utilities.readFile(job, "dsl/jobs/scripts/script1.sh")
+String scriptText = Utilities.readFile(job, 'dsl/jobs/scripts/script1.sh')
 //String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
 //if (isWorkspace) {
 //    scriptText = readFileFromWorkspace(filePath)
