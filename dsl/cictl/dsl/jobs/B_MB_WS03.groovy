@@ -7,6 +7,7 @@
 import com.sun.org.apache.xpath.internal.operations.Bool
 import javaposse.jobdsl.dsl.DslFactory
 import net.arjs.jobs.cictl.Constants
+import net.arjs.jobs.cictl.Utilities
 import net.arjs.jobs.cictl.DslJobBase
 import sun.font.TrueTypeFont
 
@@ -49,34 +50,20 @@ job.wrappers {
     timestamps()
 }
 
-Boolean isWorkspace = false
-String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
-println(currentDir)
-if (!currentDir.endsWith('dsl/cictl')) {
-    currentDir += 'dsl/cictl'
-    isWorkspace = true
-    println(currentDir)
-}
+//Boolean isWorkspace = false
+//String currentDir = (new File(".").getAbsolutePath()).replace('/.', '')
+//if (!currentDir.endsWith('dsl/cictl')) {
+//    currentDir += 'dsl/cictl'
+//    isWorkspace = true
+//}
 
-String scriptText
-String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
-println(filePath)
-if (isWorkspace) {
-    scriptText = readFileFromWorkspace(filePath)
-} else {
-    scriptText = new File(filePath).getText('UTF-8')
-}
-job.steps {
-    shell(scriptText)
-}
-
-filePath = currentDir + '/src/main/resources/scripts/script1.sh'
-println(filePath)
-if (isWorkspace) {
-    scriptText = readFileFromWorkspace(filePath)
-} else {
-    scriptText = new File(filePath).getText('UTF-8')
-}
+String scriptText = Utilities.readFile("dsl/jobs/scripts/script1.sh")
+//String filePath = currentDir + '/dsl/jobs/scripts/script1.sh'
+//if (isWorkspace) {
+//    scriptText = readFileFromWorkspace(filePath)
+//} else {
+//    scriptText = new File(filePath).getText('UTF-8')
+//}
 job.steps {
     shell(scriptText)
 }
