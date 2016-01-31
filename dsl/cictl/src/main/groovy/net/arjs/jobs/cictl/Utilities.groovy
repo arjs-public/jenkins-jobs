@@ -4,6 +4,8 @@
 
 package net.arjs.jobs.cictl
 
+import javaposse.jobdsl.dsl.jobs.FreeStyleJob
+
 class Utilities {
     static Boolean isWorkingPath = false
     static String currentDir = null
@@ -17,17 +19,18 @@ class Utilities {
         return currentDir
     }
 
-    static def String readFile(String relativePath) {
+    static def String readFile(FreeStyleJob job, String relativePath) {
         if (currentDir == null) {
             getBasePath()
         }
         String filePath = currentDir + ((relativePath.startsWith('/')) ? '' : '/') + relativePath
         String scriptText
         if (isWorkingPath) {
-            scriptText = readFileFromWorkspace(filePath)
+            scriptText = job.readFileFromWorkspace(filePath)
         } else {
             scriptText = new File(filePath).getText('UTF-8')
         }
         return scriptText
     }
+
 }
