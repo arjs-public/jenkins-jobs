@@ -7,3 +7,4 @@ test -s bin/activate && source bin/activate
 pip install -r src/requirements.txt
 test ${DEBUG1} == true && pip list
 pushd src
+make dev pack
