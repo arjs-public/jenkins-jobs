@@ -4,7 +4,6 @@
 package net.arjs.jobs.cictl
 
 import javaposse.jobdsl.dsl.DslFactory
-//import javaposse.jobdsl.dsl.Job
 
 class DslJobBase {
     String name
@@ -31,5 +30,4 @@ class DslJobBase {
             }
         }
     }
-
 }
