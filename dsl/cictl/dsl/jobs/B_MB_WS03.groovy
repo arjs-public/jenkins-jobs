@@ -23,7 +23,7 @@ job = new DslJobBase(
         name: Constants.S_SITES_DIR + Constants.S_JOB_SEPARATOR + "CF_ALL_WS03" + Constants.S_JOB_SEPARATOR + "B_MB_WS03",
         displayName: "ALL: v2.arjs.net [B,MB,WS03,1.0,T]",
         description: "A job to build v2.arjs.net (WS03) from master branch (MB)."
-).build(this as DslFactory)
+).build.call(this as DslFactory)
 
 job.parameters {
     booleanParam('DEBUG1', false, 'Enable debuging of script1.')
@@ -57,3 +57,12 @@ if (Utilities.isWorkingPath) {
 job.steps {
     shell(scriptText)
 }
+
+job.publishers {
+    retryBuild {
+        progressiveDelay(14, 45)
+        retryLimit(3)
+    }
+    archiveJunit('src/reports/*')
+}
+

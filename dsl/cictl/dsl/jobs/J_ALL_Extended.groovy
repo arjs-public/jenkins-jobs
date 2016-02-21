@@ -15,7 +15,7 @@ job = new DslJobBase(
         name: Constants.S_COMMON_DIR + Constants.S_JOB_SEPARATOR + "J_ALL_EXTENDED",
         displayName: "ALL: Extended [J,1.0,M]",
         description: "A extended basic job"
-).build(this as DslFactory)
+).build.call(this as DslFactory)
 
 job.configure { node ->
     node / triggers / 'org.jenkinsci.plugins.buildresulttrigger.BuildResultTrigger' {
