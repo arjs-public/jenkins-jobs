@@ -4,12 +4,10 @@
  */
 
 
-//import com.sun.org.apache.xpath.internal.operations.Bool
 import javaposse.jobdsl.dsl.DslFactory
 import net.arjs.jobs.cictl.Constants
-import net.arjs.jobs.cictl.Utilities
 import net.arjs.jobs.cictl.DslJobBase
-//import sun.font.TrueTypeFont
+import net.arjs.jobs.cictl.Utilities
 
 folder(Constants.S_SITES_DIR) {
     displayName('Websites')

@@ -33,6 +33,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <!--<exclude>**/TestJobScriptsSpec.java</exclude>-->
+                    </excludes>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
@@ -48,6 +53,21 @@
                             <goal>compile</goal>
                             <goal>testCompile</goal>
                         </goals>
+                        <!--<phase>compile</phase>
+                        <configuration>
+                            <sources>
+                                <fileset>
+                                    <directory>${pom.basedir}/jobs/jenkins/dsl</directory>
+                                    <includes>
+                                        <include>**/*.groovy</include>
+                                    </includes>
+                                    <directory>${pom.basedir}/src/main/groovy</directory>
+                                    <includes>
+                                        <include>**/*.groovy</include>
+                                    </includes>
+                                </fileset>
+                            </sources>
+                        </configuration>-->
                     </execution>
                 </executions>
                 <dependencies>

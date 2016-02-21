@@ -1,5 +1,5 @@
 /**
- *  Created by alexrjs on 09.11.15.
+ *  Created by alexrjs on 18.02.16.
  */
 package net.arjs.jobs.cictl.tests
 
@@ -14,7 +14,7 @@ import spock.lang.Unroll
 /**
  * Tests that all dsl scripts in the jobs directory will compile.
  */
-class TestJobScriptsSpec extends Specification {
+class TestJobBasicScriptsSpec extends Specification {
 
     @Unroll
     void 'test script #file.name'(File file) {
@@ -30,7 +30,7 @@ class TestJobScriptsSpec extends Specification {
         noExceptionThrown()
 
         where:
-        file << getJobFiles()
+        file << getJobFiles('Basic')
     }
 
     static List<File> getJobFiles(String filter = '') {
