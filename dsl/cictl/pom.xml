@@ -15,7 +15,7 @@
         <gmaven-plugin.version>1.5</gmaven-plugin.version>
         <groovy.version>2.4.5</groovy.version>
         <spock.version>1.0-groovy-2.4</spock.version>
-        <job-dsl-core.version>1.40</job-dsl-core.version>
+        <job-dsl-core.version>1.42</job-dsl-core.version>
     </properties>
 
     <build>
@@ -35,7 +35,9 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <!--<exclude>**/TestJobScriptsSpec.java</exclude>-->
+                        <!--<exclude>**/TestJobScriptsSpec.*</exclude>-->
+                        <exclude>**/TestJobBuildScriptsSpec.*</exclude>
+                        <exclude>**/TestJobViewsScriptsSpec.*</exclude>
                     </excludes>
                 </configuration>
             </plugin>

@@ -26,7 +26,7 @@ job = new DslJobBase(
 ).build.call(this as DslFactory)
 
 job.parameters {
-    booleanParam('DEBUG1', false, 'Enable debuging of script1.')
+    booleanParam('DEBUG1', false, 'Enable debugging of script1.')
 }
 
 job.scm {
