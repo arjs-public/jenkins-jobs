@@ -3,7 +3,6 @@
  * A job to build v2.arjs.net (WS03) from master branch (MB).
  */
 
-
 import javaposse.jobdsl.dsl.DslFactory
 import net.arjs.jobs.cictl.Constants
 import net.arjs.jobs.cictl.DslJobBase
@@ -30,8 +29,8 @@ if (Utilities.isWorkingPath) {
 
 def types = ['patch', 'minor', 'major']
 def targets = ['publish', 'pack', 'test']
-def envs = ['ci', 'stage', 'prod']
-envs.each { env ->
+def environments = ['ci', 'stage', 'prod']
+environments.each { env ->
     def u_env = env.toUpperCase()
     def name = "B_MB_" + u_env + "_WS03"
     job = new DslJobBase(
