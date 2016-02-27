@@ -39,6 +39,12 @@ environments.each { env ->
             description: "A job to build v2.arjs.net (WS03) from master branch (MB) for '" + env + "'."
     ).build.call(this as DslFactory)
 
+    job.properties {
+        rebuild {
+            autoRebuild()
+        }
+    }
+
     job.parameters {
         choiceParam('environment', [env], 'The environment to use.')
         choiceParam('type', types, 'The type to use.')
