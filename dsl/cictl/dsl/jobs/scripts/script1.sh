@@ -37,5 +37,6 @@ info Make v2.arjs.net with ${environment} ${type} ${target}
 
 pushd src
 make ${environment} ${type} ${target}
+test "${environment}" == "prod" && git checkout master && git pull && git push --tags || true
 
 info Done.
