@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 die() {
-    echo "[Error]: " $*
+    echo "[Error] " $*
     exit 1
 }
 
 warn() {
-    echo "[Warning]: " $*
+    echo "[Warning] " $*
 }
 
 info() {
-    echo "[Info]: " $*
+    echo "[Info] " $*
 }
 
 debug() {
