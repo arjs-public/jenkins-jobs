@@ -33,12 +33,15 @@ def environments = ['ci', 'stage', 'prod']
 environments.each { env ->
     def u_env = env.toUpperCase()
     def name = "B_MB_" + u_env + "_WS03"
-    job = new DslJobBase(
+    def dslFactory = this as DslFactory
+    //noinspection GroovyAssignabilityCheck
+    def job = new DslJobBase(
             name: folder_name + Constants.S_JOB_SEPARATOR + name,
             displayName: u_env + ": v2.arjs.net [B,MB,WS03,1.0,T]",
             description: "A job to build v2.arjs.net (WS03) from master branch (MB) for '" + env + "'."
-    ).build.call(this as DslFactory)
+    ).build(dslFactory) as DslFactory
 
+    //noinspection GroovyAssignabilityCheck
     job.properties {
         rebuild {
             autoRebuild()
@@ -80,5 +83,10 @@ environments.each { env ->
             retryLimit(3)
         }
         archiveJunit('src/reports/*')
+        slackNotifications {
+            notifyFailure()
+            notifyUnstable()
+            notifyBackToNormal()
+        }
     }
 }
