@@ -83,7 +83,9 @@ environments.each { env ->
             retryLimit 3
         }
         archiveJunit 'src/reports/*'
-        slackNotifications {
+    }
+    job.configure {
+        it / publishers / 'slackNotifications'(plugin: 'slack@2.0.1') {
             notifyFailure()
             notifyUnstable()
             notifyBackToNormal()
