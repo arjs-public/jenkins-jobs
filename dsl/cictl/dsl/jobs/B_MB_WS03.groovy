@@ -87,7 +87,7 @@ environments.each { env ->
     job.configure {
         it / publishers / 'jenkins.plugins.slack.SlackNotifier'(plugin: 'slack@2.0.1') {
             notifyNotBuilt true
-            notifySuccess true
+            notifyAborted true
             notifyFailure true
             notifyUnstable true
             notifyBackToNormal true
