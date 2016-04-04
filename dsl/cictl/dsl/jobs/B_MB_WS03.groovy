@@ -85,7 +85,7 @@ environments.each { env ->
         archiveJunit 'src/reports/*'
     }
     job.configure {
-        it / publishers / 'slackNotifications'(plugin: 'slack@2.0.1') {
+        it / publishers / 'jenkins.plugins.slack.SlackNotifier'(plugin: 'slack@2.0.1') {
             notifyFailure()
             notifyUnstable()
             notifyBackToNormal()
