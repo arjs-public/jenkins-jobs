@@ -49,40 +49,40 @@ environments.each { env ->
     }
 
     job.parameters {
-        choiceParam('environment', [env], 'The environment to use.')
-        choiceParam('type', types, 'The type to use.')
-        choiceParam('target', targets, 'The target to use.')
-        booleanParam('DEBUG1', false, 'Enable debugging of script1.')
+        choiceParam 'environment', [env], 'The environment to use.'
+        choiceParam 'type', types, 'The type to use.'
+        choiceParam 'target', targets, 'The target to use.'
+        booleanParam 'DEBUG1', false, 'Enable debugging of script1.'
     }
 
     job.scm {
         git {
             remote {
-                delegate.name('v2.arjs.net')
-                credentials(Constants.S_BBORG_ALEXRJS)
-                url('git@bitbucket.org:alexrjs/sites-v2.arjs.net.git')
+                delegate.name 'v2.arjs.net'
+                credentials Constants.S_BBORG_ALEXRJS
+                url 'git@bitbucket.org:alexrjs/sites-v2.arjs.net.git'
             }
             clean()
-            branch('*/master')
-            recursiveSubmodules(false)
-            relativeTargetDir('src')
+            branch '*/master'
+            recursiveSubmodules false
+            relativeTargetDir 'src'
         }
     }
 
     job.wrappers {
-        buildName('${GIT_BRANCH}/${GIT_REVISION, length=8}')
+        buildName '${GIT_BRANCH}/${GIT_REVISION, length=8}'
     }
 
     job.steps {
-        shell(scriptText)
+        shell scriptText
     }
 
     job.publishers {
         retryBuild {
-            progressiveDelay(14, 45)
-            retryLimit(3)
+            progressiveDelay 14, 45
+            retryLimit 3
         }
-        archiveJunit('src/reports/*')
+        archiveJunit 'src/reports/*'
         slackNotifications {
             notifyFailure()
             notifyUnstable()
