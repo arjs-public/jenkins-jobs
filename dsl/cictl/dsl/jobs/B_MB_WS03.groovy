@@ -83,9 +83,8 @@ environments.each { env ->
             retryLimit 3
         }
         archiveJunit 'src/reports/*'
-    }
-    job.configure {
-        it / publishers / 'jenkins.plugins.slack.SlackNotifier'(plugin: 'slack@2.0.1') {
+        slackNotifications {
+            notifySuccess true
             notifyNotBuilt true
             notifyAborted true
             notifyFailure true
@@ -93,4 +92,13 @@ environments.each { env ->
             notifyBackToNormal true
         }
     }
+//    job.configure {
+//        it / publishers / 'jenkins.plugins.slack.SlackNotifier'(plugin: 'slack@2.0.1') {
+//            notifyNotBuilt true
+//            notifyAborted true
+//            notifyFailure true
+//            notifyUnstable true
+//            notifyBackToNormal true
+//        }
+//    }
 }
